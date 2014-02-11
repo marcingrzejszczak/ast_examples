@@ -1,13 +1,14 @@
-repositories {
-    mavenCentral()
-}
-
 subprojects {
     apply plugin: 'groovy'
+    apply plugin: "maven"
 
     repositories {
         mavenCentral()
+        mavenLocal()
     }
+
+    group = "com.blogspot.toomuchcoding"
+    version = "1.0"
 
     dependencies {
         compile 'org.codehaus.groovy:groovy-all:2.2.0'
@@ -24,6 +25,7 @@ project(":ast_transform") {
 
 project(":examples") {
     dependencies {
-        compile project(":ast_transform")
+        //compile project(":ast_transform")
+        compile "com.blogspot.toomuchcoding:ast_transform:$version"
     }
 }
