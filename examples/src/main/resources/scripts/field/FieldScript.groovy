@@ -1,4 +1,4 @@
-package field
+package scripts.field
 
 import groovy.transform.Field
 

@@ -1,5 +1,8 @@
 package com.blogspot.toomuchcoding.util
 
+/**
+ * Taken from Mockito :)
+ */
 class SerializationUtil {
     static <T> T serializeAndBack(T obj) throws Exception {
         ByteArrayOutputStream os = serializeObject(obj);

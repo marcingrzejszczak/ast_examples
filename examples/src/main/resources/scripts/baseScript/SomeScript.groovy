@@ -1,4 +1,4 @@
-package baseScript
+package scripts.baseScript
 
 import com.blogspot.toomuchcoding.basescript.NewBaseScript
 import groovy.transform.BaseScript

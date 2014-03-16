@@ -11,7 +11,7 @@ class CustomAstSpec extends Specification {
     
     def "should print content of the method in the script together with the logic from AST transform"() {
         given: 
-            Class baseScript =  new GroovyClassLoader().parseClass(this.getClass().getResource("/ast/ClassWithAst.groovy").text)
+            Class baseScript =  new GroovyClassLoader().parseClass(this.getClass().getResource("/scripts/ast/ClassWithAst.groovy").text)
             Script script = (Script) baseScript.newInstance()
         when:
             script.run()

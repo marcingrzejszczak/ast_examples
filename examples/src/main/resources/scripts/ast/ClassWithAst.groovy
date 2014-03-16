@@ -1,4 +1,4 @@
-package ast
+package scripts.ast
 
 import com.blogspot.toomuchcoding.ast.WithLogging
 

@@ -7,7 +7,7 @@ class BaseScriptSpec extends Specification {
     
     def "should make script return the @BaseScript annotated object"() {
         given:
-            Class baseScript =  new GroovyClassLoader().parseClass(this.getClass().getResource("/baseScript/SomeScript.groovy").text)
+            Class baseScript =  new GroovyClassLoader().parseClass(this.getClass().getResource("/scripts/baseScript/SomeScript.groovy").text)
             Script script = (Script) baseScript.newInstance()
         when:
             def result = script.run()

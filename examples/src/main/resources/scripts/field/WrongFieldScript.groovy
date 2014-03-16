@@ -1,4 +1,4 @@
-package field
+package scripts.field
 
 def map = ["key": "value"]
 

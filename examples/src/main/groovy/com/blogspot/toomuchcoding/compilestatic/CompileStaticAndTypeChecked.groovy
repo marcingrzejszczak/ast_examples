@@ -12,19 +12,19 @@ class CompileStaticAndTypeChecked {
 
     /**
      * There is no method bar yet the code compiles - try to add @TypeChecked or @CompileStatic and the code won't compile
-     * @return
      */
+    //@TypeChecked
     def groovy() {
-        player.bar
+        return player.bar
     }
 
     @TypeChecked
-    def typed() {
-        player.unknownType
+    def typeChecked() {
+        return player.unknownType
     }
 
     @CompileStatic
-    def compiled() {
-        player.unknownType
+    def staticCompiled() {
+        return player.unknownType
     }
 }

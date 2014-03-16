@@ -18,7 +18,7 @@ class CompileStaticAndTypeCheckSpec extends Specification {
         given:
             CompileStaticAndTypeChecked object = new CompileStaticAndTypeChecked()        
         when:
-            String result = object.typed()
+            String result = object.typeChecked()
         then:
             OVERLOADED_RESULT == result
     }
@@ -27,7 +27,7 @@ class CompileStaticAndTypeCheckSpec extends Specification {
         given:
             CompileStaticAndTypeChecked object = new CompileStaticAndTypeChecked()
         when:
-            String result = object.compiled()
+            String result = object.staticCompiled()
         then:
             ORIGINAL_RESULT == result
     }
