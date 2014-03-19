@@ -1,8 +1,8 @@
 package scripts.ast
 
-import com.blogspot.toomuchcoding.ast.WithLogging
+import com.blogspot.toomuchcoding.ast.script.WithLogging
 
-@WithLogging()
+@WithLogging
 void doSth() {
     println "In the middle"
 }

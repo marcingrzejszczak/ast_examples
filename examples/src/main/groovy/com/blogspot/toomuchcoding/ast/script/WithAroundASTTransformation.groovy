@@ -1,4 +1,4 @@
-package com.blogspot.toomuchcoding.ast
+package com.blogspot.toomuchcoding.ast.script
 import org.codehaus.groovy.ast.ASTNode
 import org.codehaus.groovy.ast.ClassNode
 import org.codehaus.groovy.ast.MethodNode

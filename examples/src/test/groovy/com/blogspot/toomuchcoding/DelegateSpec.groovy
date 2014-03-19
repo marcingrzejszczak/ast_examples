@@ -5,8 +5,9 @@ import spock.lang.Specification
 
 class DelegateSpec extends Specification {
 
-    public static final int ROBERT_VALUE = 30_000_000
-    public static final int WOJCIECH_VALUE = 10_000_000
+    static final int ROBERT_VALUE = 30_000_000
+
+    static final int WOJCIECH_VALUE = 10_000_000
 
     def "should calculate total amount by allowing a player to call big decimal methods"() {
         given:

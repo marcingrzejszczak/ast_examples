@@ -1,25 +1,24 @@
 package com.blogspot.toomuchcoding
 
-import com.blogspot.toomuchcoding.ast.ClassWithAst
 import spock.lang.Specification
 
-class CustomAstSpec extends Specification {
+class CustomAstFromScriptSpec extends Specification {
     ByteArrayOutputStream outContent = new ByteArrayOutputStream()    
-
+    
     def setup() {
         System.out = new PrintStream(outContent)
     }
-
+    
     def "should print content of the method in the script together with the logic from AST transform"() {
-        given:
-            ClassWithAst objectUnderTest = new ClassWithAst()
+        given: 
+            Class baseScript =  new GroovyClassLoader().parseClass(this.getClass().getResource("/scripts/ast/ClassWithAst.groovy").text)
+            Script script = (Script) baseScript.newInstance()
         when:
-            objectUnderTest.doSth()
+            script.run()
         then:
             "Starting doSth\r\n"+
             "In the middle\r\n"+
             "Ending doSth\r\n" == outContent.toString()
-
     }
     
     def cleanup() {

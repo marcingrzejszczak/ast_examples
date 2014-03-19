@@ -2,7 +2,7 @@ package com.blogspot.toomuchcoding.mixin
 
 @Category(Athlete)
 class DribblingAbility {
-    def dribble() { 
+    String dribble() {
         return "My name is [${name}]. I can dribble." 
     }
 }

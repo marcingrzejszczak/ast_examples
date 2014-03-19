@@ -25,4 +25,13 @@ class CanonicalSpec extends Specification {
             println toString
     }
 
+    def "should have an overridden hashcode method"() {
+        given:
+            def player = new CanonicalPlayer(name: "name", surname: "surname", positions: ["forward", "defence"], age: 10, skills: ["offence": "good", "defence": "bad"])
+        when:
+            def canonicalPlayer = new CanonicalPlayer("name", "surname", ["forward", "defence"], 10, ["offence": "good", "defence": "bad"])
+        then:
+            player.hashCode() == canonicalPlayer.hashCode()
+    }
+
 }

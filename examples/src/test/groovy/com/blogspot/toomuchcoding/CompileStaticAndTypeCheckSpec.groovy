@@ -4,14 +4,13 @@ import com.blogspot.toomuchcoding.compilestatic.CompileStaticAndTypeChecked
 import com.blogspot.toomuchcoding.compilestatic.DynamicPlayer
 import spock.lang.Specification
 
-import static DynamicPlayer.getORIGINAL_RESULT
 
 class CompileStaticAndTypeCheckSpec extends Specification {
     
     static final String OVERLOADED_RESULT = ""
     
     def setupSpec() {
-        DynamicPlayer.metaClass.getUnknownType = { OVERLOADED_RESULT }
+        DynamicPlayer.metaClass.getUnknownType = { return OVERLOADED_RESULT }
     }
     
     def "should return injected method's result for @TypeChecked annotated method"() {
@@ -29,7 +28,7 @@ class CompileStaticAndTypeCheckSpec extends Specification {
         when:
             String result = object.staticCompiled()
         then:
-            ORIGINAL_RESULT == result
+            DynamicPlayer.ORIGINAL_RESULT == result
     }
 
     def cleanupSpec() {

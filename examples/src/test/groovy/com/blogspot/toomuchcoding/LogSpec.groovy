@@ -6,6 +6,7 @@ import spock.lang.Specification
 class LogSpec extends Specification {
     def "should add logger through ast"() {
         expect:
-            PlayerServiceWithLog.log != null        
+            PlayerServiceWithLog.log != null
+            new PlayerServiceWithLog().someMethod()
     }
 }

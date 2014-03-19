@@ -12,5 +12,6 @@ class ImmutableSpec extends Specification {
         then:
             RuntimeException exception = thrown()
             exception.message.contains("@Immutable processor doesn't know how to handle field 'mutablePlayer' of type")
+            println exception.message
     }
 }

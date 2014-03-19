@@ -2,7 +2,7 @@ package com.blogspot.toomuchcoding.mixin
 
 @Category(Athlete)
 class TennisAbility {
-    def backhand() {
+    String backhand() {
         return "My name is [${name}]. I can use my backhand." 
     }
 }

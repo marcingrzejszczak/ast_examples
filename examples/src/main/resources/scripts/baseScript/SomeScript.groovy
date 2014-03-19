@@ -8,4 +8,6 @@ println "Hello"
 @BaseScript NewBaseScript newBaseScript
 
 assert newBaseScript == this
+assert newBaseScript.hello() == hello()
+
 return hello()

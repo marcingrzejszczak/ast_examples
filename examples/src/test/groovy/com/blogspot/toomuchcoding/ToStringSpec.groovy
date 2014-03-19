@@ -12,5 +12,6 @@ class ToStringSpec extends Specification {
             String result = childPlayer.toString()
         then:
             !result.startsWith("${childPlayer.class.name}@")
+            println result
     }
 }

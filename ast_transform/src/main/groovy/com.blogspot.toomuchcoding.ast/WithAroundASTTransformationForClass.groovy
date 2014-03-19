@@ -18,7 +18,7 @@ import org.codehaus.groovy.transform.GroovyASTTransformation
 import static org.codehaus.groovy.control.CompilePhase.CANONICALIZATION
 import static org.codehaus.groovy.control.CompilePhase.SEMANTIC_ANALYSIS
 
-@GroovyASTTransformation(phase = CANONICALIZATION)
+@GroovyASTTransformation(phase = SEMANTIC_ANALYSIS)
 public class WithAroundASTTransformationForClass extends AbstractASTTransformation {
 
     public void visit(ASTNode[] nodes, SourceUnit sourceUnit) {
@@ -29,6 +29,9 @@ public class WithAroundASTTransformationForClass extends AbstractASTTransformati
             ClassNode cNode = (ClassNode) targetClass;
             cNode.methods.each {
                 addAstStatementsInAManualWay(it)
+                //addAstStatementsWithBuilderFromString(it)
+                //addAstStatementsWithBuilderFromCode(it) // sth's wrong ;)
+                //addAstStatementsWithBuilderFromSpec(it)
             }
         }
     }
@@ -41,6 +44,10 @@ public class WithAroundASTTransformationForClass extends AbstractASTTransformati
         addStatements(method, startMessage, endMessage)
     }
 
+    /**
+     * for example:
+     * this.println "Starting doSth()"
+     */
     private Statement createPrintlnAst(String message) {
         // create an expression
         return new ExpressionStatement(
@@ -66,7 +73,7 @@ public class WithAroundASTTransformationForClass extends AbstractASTTransformati
     }
 
     private Statement createPrintlnAstWithAstBuilderFromString(String message) {
-        def buildNodes = new AstBuilder().buildFromString(SEMANTIC_ANALYSIS, false, "println(\"$message\")")
+        def buildNodes = new AstBuilder().buildFromString(SEMANTIC_ANALYSIS, false, "println('$message')")
         return buildNodes[0].statements[0]
     }
 
@@ -79,6 +86,7 @@ public class WithAroundASTTransformationForClass extends AbstractASTTransformati
     }
 
     private Statement createPrintlnAstWithAstBuilderFromCode(String message) {
+        // compiler has no idea when executing this code what the hell message is
         def buildNodes = new AstBuilder().buildFromCode(SEMANTIC_ANALYSIS, false, {
             println message
         })
